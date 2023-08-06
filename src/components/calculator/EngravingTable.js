@@ -14,7 +14,7 @@ import ReducedEngravingSelect from "./ReducedEngravingSelect";
 import EngravingNameSelect from './EngravingNameSelect';
 
 function EngravingTable(props) {
-
+    //======================= STATES ==============================================================
     const [engraving1Total, setEngraving1Total] = React.useState(0);
     const [engraving2Total, setEngraving2Total] = React.useState(0);
     const [engraving3Total, setEngraving3Total] = React.useState(0);
@@ -22,36 +22,71 @@ function EngravingTable(props) {
     const [engraving5Total, setEngraving5Total] = React.useState(0);
     const [engraving6Total, setEngraving6Total] = React.useState(0);
 
-    function initiateRowData(accessory, maxEngravingValue) {
+    // Necklace Engraving
+    const [necklaceEngraving1, setNecklaceEngraving1] = React.useState(0);
+    const [necklaceEngraving2, setNecklaceEngraving2] = React.useState(0);
+
+    // Earring Engraving
+    const [earring1Engraving1, setEarring1Engraving1] = React.useState(0);
+    const [earring1Engraving2, setEarring1Engraving2] = React.useState(0);
+    const [earring2Engraving1, setEarring2Engraving1] = React.useState(0);
+    const [earring2Engraving2, setEarring2Engraving2] = React.useState(0);
+
+    // Ring Engraving
+    const [ring1Engraving1, setRing1Engraving1] = React.useState(0);
+    const [ring1Engraving2, setRing1Engraving2] = React.useState(0);
+    const [ring2Engraving1, setRing2Engraving1] = React.useState(0);
+    const [ring2Engraving2, setRing2Engraving2] = React.useState(0);
+
+    // Book Engravings
+    const [engraving1, setEngraving1] = React.useState(0);
+    const [engraving2, setEngraving2] = React.useState(0);
+
+    // Ability Stone Engraving
+    const [abilityStone1, setAbilityStone1] = React.useState(0);
+    const [abilityStone2, setAbilityStone2] = React.useState(0);
+
+    //===================== ENGRAVING 5x3 EPIC ENGRAVING BOOK CONSTRAINT LOGIC =====================================
+
+
+    //====================== TO POPULATE TABLE (DO NOT TOUCH!) =====================
+
+    function initiateRowData(accessory, maxEngravingValue, engravingValue, setEngravingValue) {
+        const commonProps = {
+            accessory,
+            maxEngravingValue,
+            engravingValue,
+            setEngravingValue
+        }
         return {
             accessory,
             engraving1: <EngravingSelect
-                maxEngravingValue={maxEngravingValue}
+                {...commonProps}
                 engravingTotal={engraving1Total}
                 setEngravingTotal={setEngraving1Total}
             />,
             engraving2: <EngravingSelect
-                maxEngravingValue={maxEngravingValue}
+                {...commonProps}
                 engravingTotal={engraving2Total}
                 setEngravingTotal={setEngraving2Total}
             />,
             engraving3: <EngravingSelect
-                maxEngravingValue={maxEngravingValue}
+                {...commonProps}
                 engravingTotal={engraving3Total}
                 setEngravingTotal={setEngraving3Total}
             />,
             engraving4: <EngravingSelect
-                maxEngravingValue={maxEngravingValue}
+                {...commonProps}
                 engravingTotal={engraving4Total}
                 setEngravingTotal={setEngraving4Total}
             />,
             engraving5: <EngravingSelect
-                maxEngravingValue={maxEngravingValue}
+                {...commonProps}
                 engravingTotal={engraving5Total}
                 setEngravingTotal={setEngraving5Total}
             />,
             engraving6: <EngravingSelect
-                maxEngravingValue={maxEngravingValue}
+                {...commonProps}
                 engravingTotal={engraving6Total}
                 setEngravingTotal={setEngraving6Total}
             />,
@@ -68,14 +103,14 @@ function EngravingTable(props) {
     }
 
     const rows = [
-        initiateRowData('Necklace', 5),
-        initiateRowData('Earring 1', 5),
-        initiateRowData('Earring 2', 5),
-        initiateRowData('Ring 1', 5),
-        initiateRowData('Ring 2', 5),
-        initiateRowData('Engraving 1', 12),
-        initiateRowData('Engraving 2', 12),
-        initiateRowData('Ability Stone', 10)
+        initiateRowData('Necklace', 5, [necklaceEngraving1, necklaceEngraving2], [setNecklaceEngraving1, setNecklaceEngraving2]),
+        initiateRowData('Earring 1', 5, [earring1Engraving1, earring1Engraving2], [setEarring1Engraving1, setEarring1Engraving2]),
+        initiateRowData('Earring 2', 5, [earring2Engraving1, earring2Engraving2], [setEarring2Engraving1, setEarring2Engraving2]),
+        initiateRowData('Ring 1', 5, [ring1Engraving1, ring1Engraving2], [setRing1Engraving1, setRing1Engraving2]),
+        initiateRowData('Ring 2', 5, [ring2Engraving1, ring2Engraving2], [setRing2Engraving1, setRing2Engraving2]),
+        initiateRowData('Engraving 1', 12, engraving1, setEngraving1),
+        initiateRowData('Engraving 2', 12, engraving2, setEngraving2),
+        initiateRowData('Ability Stone', 10, [abilityStone1, abilityStone2], [setAbilityStone1, setAbilityStone2])
     ];
 
     const columns = [

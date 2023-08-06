@@ -1,3 +1,7 @@
+import { amber } from '@mui/material/colors';
+
+//======= COLOURS ===========================
+
 export const styles = {
     tableHead: {
         backgroundColor: '#1A2027'
@@ -8,5 +12,13 @@ export const styles = {
     },
     formControl: {
         minWidth: 140
+    },
+    engravingSelect: {
+        selected: {
+            color: amber[500]
+        },
+        selectedMax: {
+            color: amber[800]
+        }
     }
 }
